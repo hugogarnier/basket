@@ -1,0 +1,140 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+type Schedule {
+  id     String  @map("_id") @db.ObjectId
+  date   String
+  opp    String?
+  oppPts Int?
+  ot     String?
+  ppd    String?
+  pts    Int?
+  team   String?
+  text   String?
+}
+
+type Standing {
+  GB           Int?
+  id           String @map("_id") @db.ObjectId
+  lose         Int
+  percentage   Float
+  pointAllowed Float
+  pointScored  Float
+  team         String
+  win          Int
+}
+
+type StandingTeamPerGameStats {
+  id                   String @map("_id") @db.ObjectId
+  assist               Float
+  block                Float
+  defRebond            Float
+  fieldGoals           Float
+  fieldGoalsAttempt    Float
+  fieldGoalsPercentage Float
+  foul                 Float
+  freeThrow            Float
+  freeThrowAttempt     Float
+  freeThrowPercentage  Float
+  games                Int
+  offRebond            Float
+  points               Float
+  rank                 Int
+  steal                Float
+  team                 String
+  threePoint           Float
+  threePointAttempt    Float
+  threePointPercentage Float
+  totRebond            Float
+  turnover             Float
+  twoPoint             Float
+  twoPointAttempt      Float
+  twoPointPercentage   Float
+}
+
+type StandingTeamTotalStats {
+  id                   String @map("_id") @db.ObjectId
+  assist               Int
+  block                Int
+  defRebond            Int
+  fieldGoals           Int
+  fieldGoalsAttempt    Int
+  fieldGoalsPercentage Float
+  foul                 Int
+  freeThrow            Int
+  freeThrowAttempt     Int
+  freeThrowPercentage  Float
+  games                Int
+  offRebond            Int
+  points               Int
+  rank                 Int
+  steal                Int
+  team                 String
+  threePoint           Int
+  threePointAttempt    Int
+  threePointPercentage Float
+  totRebond            Int
+  turnover             Int
+  twoPoint             Int
+  twoPointAttempt      Int
+  twoPointPercentage   Float
+}
+
+type TeamStats {
+  id                   String @map("_id") @db.ObjectId
+  assist               Float
+  block                Float
+  defRebond            Float
+  fieldGoals           Float
+  fieldGoalsAttempt    Float
+  fieldGoalsPercentage Float
+  foul                 Float
+  freeThrow            Float
+  freeThrowAttempt     Float
+  freeThrowPercentage  Float
+  games                Int
+  minutes              Int
+  offRebond            Float
+  points               Float
+  steal                Float
+  team                 String
+  threePoint           Float
+  threePointAttempt    Float
+  threePointPercentage Float
+  totRebond            Float
+  turnover             Float
+  twoPoint             Float
+  twoPointAttempt      Float
+  twoPointPercentage   Float
+}
+
+model schedules {
+  id       String              @id @default(auto()) @map("_id") @db.ObjectId @unique
+  v        Int                 @map("__v")
+  schedule Schedule[]
+  season   Int @unique
+}
+
+model standings {
+  id               String                      @id @default(auto()) @map("_id") @db.ObjectId @unique
+  v                Int                         @map("__v")
+  season           Int                         @unique
+  standings        Standing[]
+  teamPerGameStats StandingTeamPerGameStats[]
+  teamTotalStats   StandingTeamTotalStats[]
+}
+
+model teams {
+  id        String           @id @default(auto()) @map("_id") @db.ObjectId @unique
+  v         Int              @map("__v")
+  name      String
+  season    Int @unique
+  teamStats TeamStats[]
+}
