@@ -1,8 +1,9 @@
+import { useState } from 'react'
 import type { LinksFunction, LoaderFunction } from 'remix'
 import { json, Link, Outlet, useLoaderData } from 'remix'
 
 import Layout from '~/components/Layout'
-import { Table, TableCell, TableHead } from '~/components/Table'
+import { Table, TableCell, TableHead, TableStats } from '~/components/Table'
 import { teams } from '~/constants/teams'
 
 import { db } from '~/utils/db.server'
@@ -20,6 +21,11 @@ export const loader: LoaderFunction = async () => {
 
 export default function Index() {
   const data = useLoaderData()
+  const [changeStat, setChangeStat] = useState<boolean>(false)
+  const linkClass =
+    'text-3xl font-bold text-white transition-opacity hover:opacity-70 border-b-2 border-transparent hover:border-slate-500 hover:cursor-pointer'
+  const activeLinkClass =
+    'text-3xl font-bold text-white transition-opacity hover:opacity-70 border-b-2 border-slate-900 hover:cursor-pointer'
 
   return (
     <Layout>
@@ -68,7 +74,22 @@ export default function Index() {
             </tbody>
           </Table>
         </div>
-        <h1 className="text-3xl font-bold text-white">Per Game Stats</h1>
+        <div className="flex gap-6">
+          <h1
+            // className="text-3xl font-bold text-white"
+            className={!changeStat ? activeLinkClass : linkClass}
+            onClick={() => setChangeStat(false)}
+          >
+            Per Game Stats
+          </h1>
+          <h1
+            className={changeStat ? activeLinkClass : linkClass}
+            onClick={() => setChangeStat(true)}
+          >
+            Total Stats
+          </h1>
+        </div>
+
         <div className="overflow-x-auto py-5">
           <Table>
             <TableHead>
@@ -95,56 +116,19 @@ export default function Index() {
                 <TableCell>BLK</TableCell>
                 <TableCell>TOV</TableCell>
                 <TableCell>PF</TableCell>
-                <TableCell>PTS</TableCell>
+                <TableCell>{(changeStat && 'PTS') || 'PPG'}</TableCell>
               </tr>
             </TableHead>
             <tbody>
-              {data.standings.teamPerGameStats.map((team: StandingTeamStat) => {
-                const formatTeamName = getKeyByValue(teams, team.team)
-                return (
-                  <tr
-                    key={team.rank}
-                    className=" last:bg-slate-800 hover:cursor-pointer hover:bg-slate-700 last:hover:bg-slate-800"
-                  >
-                    <TableCell>
-                      {(team.rank === 0 && <></>) || team.rank}
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex w-72 items-center gap-4">
-                        {(formatTeamName === undefined && <></>) || (
-                          <img
-                            className="w-8"
-                            src={`images/logos/${formatTeamName}.png`}
-                            alt={team.team}
-                          />
-                        )}
-                        {team.team}
-                      </div>
-                    </TableCell>
-                    <TableCell>{team.fieldGoals}</TableCell>
-                    <TableCell>{team.fieldGoalsAttempt}</TableCell>
-                    <TableCell>{team.fieldGoalsPercentage}</TableCell>
-                    <TableCell>{team.threePoint}</TableCell>
-                    <TableCell>{team.threePointAttempt}</TableCell>
-                    <TableCell>{team.threePointPercentage}</TableCell>
-                    <TableCell>{team.twoPoint}</TableCell>
-                    <TableCell>{team.twoPointAttempt}</TableCell>
-                    <TableCell>{team.twoPointPercentage}</TableCell>
-                    <TableCell>{team.freeThrow}</TableCell>
-                    <TableCell>{team.freeThrowAttempt}</TableCell>
-                    <TableCell>{team.freeThrowPercentage}</TableCell>
-                    <TableCell>{team.offRebond}</TableCell>
-                    <TableCell>{team.defRebond}</TableCell>
-                    <TableCell>{team.totRebond}</TableCell>
-                    <TableCell>{team.assist}</TableCell>
-                    <TableCell>{team.steal}</TableCell>
-                    <TableCell>{team.block}</TableCell>
-                    <TableCell>{team.turnover}</TableCell>
-                    <TableCell>{team.foul}</TableCell>
-                    <TableCell>{team.points}</TableCell>
-                  </tr>
-                )
-              })}
+              {(changeStat &&
+                data.standings.teamTotalStats.map((team: StandingTeamStat) => {
+                  return <TableStats key={team.team} data={team} />
+                })) ||
+                data.standings.teamPerGameStats.map(
+                  (team: StandingTeamStat) => {
+                    return <TableStats key={team.team} data={team} />
+                  },
+                )}
             </tbody>
           </Table>
         </div>
