@@ -1,11 +1,15 @@
-import cn from 'classnames'
+import { Card } from '../Card'
+import { formattedDate } from '~/utils/functions/formattedDate'
+import { Schedule } from '~/utils/types'
 
-export function CardList({ games }) {
+export function CardList({ games }: { games: Schedule[] }) {
+  const newGames = formattedDate(games)
+
   return (
-    <div className="grid grid-cols-auto-fill gap-5">
-      {games.map(({ team, pts, opp, oppPts }) => (
-        <GameCard />
+    <>
+      {newGames.map((game) => (
+        <Card key={game.id} game={game} />
       ))}
-    </div>
+    </>
   )
 }

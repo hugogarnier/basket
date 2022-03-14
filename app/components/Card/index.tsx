@@ -1,4 +1,9 @@
-export function Card() {
+import { computeTeams, teams } from '~/constants/teams'
+import { getKeyByValue } from '~/utils/functions/getKeyByValue'
+import { Schedule } from '~/utils/types'
+
+export function Card({ game }: { game: Schedule }) {
+  console.log(game)
   return (
     <article
       className={
@@ -7,24 +12,31 @@ export function Card() {
     >
       <div className="flex w-full flex-col">
         <div className="flex p-6">
-          <span>Team1</span>
-          <span>test</span>
-          <div className="mt-3 flex flex-1">
-            <p className={'w-1/3 text-left text-2xl font-bold opacity-50'}>
-              100
-            </p>
-
-            <p className="flex-1 whitespace-nowrap px-3 pt-1.5 text-center uppercase"></p>
-
-            <p className={'w-1/3 text-right text-2xl font-bold opacity-50'}>
-              200
-            </p>
+          <div className="flex flex-col items-center text-center">
+            <span>{`${getKeyByValue(computeTeams, game.team)}`}</span>
+            <img
+              className="w-8"
+              src={`images/logos/${getKeyByValue(teams, game.team)}.png`}
+              alt={game.team}
+            />
           </div>
 
-          <span>Team2</span>
-          <span>test</span>
+          <div className="mx-4 mt-3 flex">
+            <p className={' text-2xl font-bold opacity-50'}>{game.pts}</p>
+            <p className="whitespace-nowrap px-3 pt-1.5 text-center uppercase">
+              Final
+            </p>
+            <p className={'text-2xl font-bold opacity-50'}>{game.oppPts}</p>
+          </div>
+          <div className="flex flex-col items-center text-center">
+            <span>{`${getKeyByValue(computeTeams, game.opp)}`}</span>
+            <img
+              className="w-8"
+              src={`images/logos/${getKeyByValue(teams, game.opp)}.png`}
+              alt={game.team}
+            />
+          </div>
         </div>
-
         <footer className="border-t border-main py-2 text-center text-sm">
           View details
         </footer>

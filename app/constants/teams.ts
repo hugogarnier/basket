@@ -18,3 +18,24 @@ export const teams = {
   'chalons-en-champagne': 'Champagne Basket',
   'fos-provence': 'Fos Provence',
 }
+
+export const computeTeams = {
+  Metropolitans: 'Metropolitans 92',
+  'LDLC ASVEL': 'LDLC ASVEL',
+  Monaco: 'AS Monaco Basket',
+  Dijon: 'JDA Dijon',
+  'Le Mans': 'Le Mans Sarthe Basket',
+  'Pau-Orthez': 'Élan Béarnais Pau-Lacq-Orthez',
+  Strasbourg: 'SIG Strasbourg',
+  Limoges: 'Limoges CSP',
+  Nanterre: 'Nanterre 92',
+  Gravelines: 'BCM Gravelines-Dunkerque',
+  'JL-Bourg': 'JL Bourg',
+  Roanne: 'Chorale Roanne Basket',
+  Cholet: 'Cholet Basket',
+  Orleans: 'Orléans Loiret Basket',
+  'Le Portel': 'ESSM Le Portel',
+  'Paris Basket': 'Paris Basketball',
+  Chalons: 'Champagne Basket',
+  'Fos Provence': 'Fos Provence',
+}

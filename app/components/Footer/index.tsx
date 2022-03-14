@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="container mx-auto pt-16 text-center">
       <p>
-        {`Develop by `}
+        {`Developped by `}
         <a
           className={linkStyle}
           href="https://google.com"
