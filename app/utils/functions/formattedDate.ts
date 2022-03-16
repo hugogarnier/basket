@@ -16,3 +16,11 @@ export const formattedDate = (object: Schedule[]) => {
     })
   return newObject
 }
+// export const formattedDate = (object: Schedule[]) => {
+//   const newObject = object.reduce(
+//     (acc: Schedule[], current: Schedule) =>
+//       (current.date.length > 10 && [...acc, current]) || acc,
+//     [],
+//   )
+//   return newObject
+// }

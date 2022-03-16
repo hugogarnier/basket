@@ -11,8 +11,8 @@ export function Card({ game }: { game: Schedule }) {
       }
     >
       <div className="flex w-full flex-col">
-        <div className="flex p-6">
-          <div className="flex flex-col items-center text-center">
+        <div className="flex justify-between p-6">
+          <div className="flex h-20 w-20 flex-col items-center justify-around text-center">
             <span>{`${getKeyByValue(computeTeams, game.team)}`}</span>
             <img
               className="w-8"
@@ -21,14 +21,14 @@ export function Card({ game }: { game: Schedule }) {
             />
           </div>
 
-          <div className="mx-4 mt-3 flex">
+          <div className=" flex-2 mt-3 flex p-4">
             <p className={' text-2xl font-bold opacity-50'}>{game.pts}</p>
             <p className="whitespace-nowrap px-3 pt-1.5 text-center uppercase">
               Final
             </p>
             <p className={'text-2xl font-bold opacity-50'}>{game.oppPts}</p>
           </div>
-          <div className="flex flex-col items-center text-center">
+          <div className="flex h-20 w-20 flex-col items-center justify-around text-center">
             <span>{`${getKeyByValue(computeTeams, game.opp)}`}</span>
             <img
               className="w-8"
