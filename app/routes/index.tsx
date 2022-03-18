@@ -1,19 +1,11 @@
-import {
-  closestIndexTo,
-  compareAsc,
-  compareDesc,
-  format,
-  formatISO,
-  parse,
-} from 'date-fns'
-import { useEffect, useMemo, useState } from 'react'
-import type { LinksFunction, LoaderFunction } from 'remix'
-import { json, Link, Outlet, useLoaderData } from 'remix'
+import { closestIndexTo, format } from 'date-fns'
+import { useEffect, useState } from 'react'
+import type { LoaderFunction } from 'remix'
+import { json, useLoaderData } from 'remix'
 import { ArrowIcon } from '~/components/ArrowIcon'
 
 import { CardList } from '~/components/CardList'
 import Layout from '~/components/Layout'
-import { Table, TableCell, TableHead } from '~/components/Table'
 
 import { db } from '~/utils/db.server'
 import { formattedDate } from '~/utils/functions/formattedDate'
@@ -31,13 +23,12 @@ export const loader: LoaderFunction = async () => {
 
 function findClosestPrevDate(dateToCompare: Date, dates: string[]) {
   const formatDates = dates.map((date) => new Date(date))
-
-  return closestIndexTo(dateToCompare, formatDates)
+  return closestIndexTo(dateToCompare, formatDates) as number
 }
 
 export default function Index() {
   const data = useLoaderData()
-  const [indexDate, setIndexDate] = useState<number>()
+  const [indexDate, setIndexDate] = useState<number>(0)
   const [computedDates, setComputedDates] = useState([
     ...new Set(formattedDate(data.schedule.schedule).map((elem) => elem.date)),
   ])
