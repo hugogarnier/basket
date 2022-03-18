@@ -54,7 +54,7 @@ export default function Index() {
                   >
                     <TableCell>{index + 1}</TableCell>
                     <TableCell className="w-auto">
-                      <div className="flex items-center gap-4">
+                      <div className="flex w-72 items-center gap-4">
                         <img
                           className="w-8"
                           src={`images/logos/${formatTeamName}.png`}
@@ -76,7 +76,6 @@ export default function Index() {
         </div>
         <div className="flex gap-6">
           <h1
-            // className="text-3xl font-bold text-white"
             className={!changeStat ? activeLinkClass : linkClass}
             onClick={() => setChangeStat(false)}
           >
