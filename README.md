@@ -1,10 +1,11 @@
 # LNB Basket stats - Remix run
 
-### Live demo - [LNB Basket Stats](https://marvel.hugogarnier.com)
+### Live demo - [LNB Basket Stats](https://basket.hugogarnier.com)
 
 ## Stack
 
 - Remix Run
+- Prisma
 - TailwindCSS
 - Vercel
 - RapidAPI

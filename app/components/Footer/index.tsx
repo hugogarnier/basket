@@ -1,5 +1,5 @@
 function Footer() {
-  const linkStyle = 'border-b-blue-500 text-blue-500 hover:border-b-[1px]'
+  const linkStyle = 'border-b-gray-900 text-gray-900 hover:border-b-[1px]'
 
   return (
     <footer className="container mx-auto pt-16 text-center">
@@ -11,7 +11,7 @@ function Footer() {
           target="_blank"
           rel="noreferrer"
         >
-          Hugo Garnier
+          Hugo
         </a>
 
         {` with `}
