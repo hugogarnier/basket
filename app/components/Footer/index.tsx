@@ -7,7 +7,7 @@ function Footer() {
         {`Developped by `}
         <a
           className={linkStyle}
-          href="https://google.com"
+          href="https://github.com/hugogarnier"
           target="_blank"
           rel="noreferrer"
         >

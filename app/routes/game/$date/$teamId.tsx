@@ -67,6 +67,10 @@ export const loader: LoaderFunction = async ({ params }) => {
   invariant(params.date, 'Expected params.date')
   invariant(params.teamId, 'Expected params.teamId')
   const { data }: { data: Game[] } = await getGames(params.date, params.teamId)
+  console.log(
+    '🚀 ~ file: $teamId.tsx ~ line 70 ~ constloader:LoaderFunction= ~ data',
+    data[0].teams,
+  )
   return json(data[0])
 }
 

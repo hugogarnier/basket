@@ -8,6 +8,9 @@ function Header() {
 
   return (
     <header className="container mx-auto flex items-center justify-between px-4 py-8">
+      <Link to="/">
+        <img className="w-24" src="/images/logos/logo.png" alt="LNB" />
+      </Link>
       <nav className="flex gap-6">
         <NavLink
           className={({ isActive }) => (isActive ? activeLinkClass : linkClass)}

@@ -1,3 +1,20 @@
+# LNB Basket stats - Remix run
+
+### Live demo - [LNB Basket Stats](https://marvel.hugogarnier.com)
+
+## Stack
+
+- Remix Run
+- TailwindCSS
+- Vercel
+- RapidAPI
+- Scrape Web with puppeteer
+
+## Screenshot
+
+![home](https://github.com/hugogarnier/basket/blob/main/public/images/screenshot/home.png)
+![standings](https://github.com/hugogarnier/basket/blob/main/public/images/screenshot/standing.png)
+
 # Welcome to Remix!
 
 - [Remix Docs](https://remix.run/docs)

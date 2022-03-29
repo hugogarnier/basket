@@ -1,3 +1,5 @@
+// TODO: refact all constants
+
 export const teams = {
   'paris-levallois': 'Metropolitans 92',
   villeurbanne: 'LDLC ASVEL',
@@ -62,22 +64,22 @@ export const teamIds = {
 }
 
 export const teamRapidApi = {
-  'paris-levallois': 'Metropolitans 92',
+  'paris-levallois': 'Levallois',
   villeurbanne: 'Lyon-Villeurbanne',
-  monaco: 'AS Monaco Basket',
+  monaco: 'Monaco',
   dijon: 'Dijon',
-  'le-mans': 'Le Mans Sarthe Basket',
-  'pau-orthez': 'Élan Béarnais Pau-Lacq-Orthez',
-  strasbourg: 'SIG Strasbourg',
-  limoges: 'Limoges CSP',
-  nanterre: 'Nanterre 92',
-  gravelines: 'BCM Gravelines-Dunkerque',
+  'le-mans': 'Le Mans',
+  'pau-orthez': 'Pau-Orthez',
+  strasbourg: 'Strasbourg',
+  limoges: 'Limoges',
+  nanterre: 'Nanterre',
+  gravelines: 'Gravelines-Dunkerque',
   bourg: 'JL Bourg',
-  roanne: 'Chorale Roanne Basket',
-  cholet: 'Cholet Basket',
-  orleans: 'Orléans Loiret Basket',
-  'le-portel': 'ESSM Le Portel',
-  'paris-basket': 'Paris Basketball',
-  'chalons-en-champagne': 'Champagne Basket',
-  'fos-provence': 'Fos Provence',
+  roanne: 'Roanne',
+  cholet: 'Cholet',
+  orleans: 'Orleans',
+  'le-portel': 'Le Portel',
+  'paris-basket': 'Paris',
+  'chalons-en-champagne': 'Chalons-Reims',
+  'fos-provence': 'Fos-sur-Mer',
 }
